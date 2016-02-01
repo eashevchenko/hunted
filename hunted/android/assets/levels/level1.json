@@ -1,0 +1,87 @@
+{
+human: [
+    {
+        name: "Hero",
+        xPos: 0,
+        yPos: -3,
+        zPos: 0,
+        xCol: 5,
+        yCol: 5,
+        zCol: 5,
+        mass: 1
+    }
+     
+],
+cubes: [
+    {            
+        xPos: -2,
+        yPos: 0,
+        zPos: 0,
+        xCol: 5,
+        yCol: 3,
+        zCol: 5,        
+        mass: 1,
+        friction:0
+        
+    },
+     {            
+        xPos: 4,
+        yPos: 0,
+        zPos: 0,
+        xCol: 5,
+        yCol: 3,
+        zCol: 5,        
+        mass: 0,
+        friction:0
+        
+    },
+     {
+      
+        xPos: 1,
+        yPos: -1,
+        zPos: 0,
+        xCol: 5,
+        yCol: 5,
+        zCol: 5,
+        mass: 0,
+        friction:0
+    },   
+    {
+      
+        xPos: -5,
+        yPos: 2,
+        zPos: 0,
+        xCol: 5,
+        yCol: 5,
+        zCol: 5,
+        mass: 0,
+        friction:1        
+    },
+     {
+      
+        xPos: 0,
+        yPos: -1,
+        zPos: 4,
+        xCol: 5,
+        yCol: 5,
+        zCol: 2,
+        mass: 0,
+        friction:1        
+    }
+       
+],
+
+land: [
+    {
+        name: "grass",
+        xPos: 0,
+        yPos: -4,
+        zPos: 0,
+        xCol: 5,
+        yCol: 5,
+        zCol: 5,
+        mass: 0,
+        friction:0
+    }  
+]
+}
