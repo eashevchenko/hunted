@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 
 public class ColorPassShader implements Shader {
-	ShaderProgram program;
+    ShaderProgram program;
     Camera camera;
     RenderContext context;
     int u_projTrans;
@@ -18,7 +18,7 @@ public class ColorPassShader implements Shader {
     int u_color;
 
     @Override
-    public void init () {
+    public void init() {
         String vert = Gdx.files.internal("shaders/color_pass_v.glsl").readString();
         String frag = Gdx.files.internal("shaders/color_pass_f.glsl").readString();
         program = new ShaderProgram(vert, frag);
@@ -30,14 +30,14 @@ public class ColorPassShader implements Shader {
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         program.dispose();
     }
 
     @Override
-    public void begin (Camera camera, RenderContext context) {
+    public void begin(Camera camera, RenderContext context) {
         this.camera = camera;
-       this.context = context;
+        this.context = context;
         program.begin();
         program.setUniformMatrix(u_projTrans, camera.combined);
         context.setDepthTest(GL20.GL_LEQUAL);
@@ -45,26 +45,27 @@ public class ColorPassShader implements Shader {
     }
 
     @Override
-    public void render (Renderable renderable) {
+    public void render(Renderable renderable) {
         program.setUniformMatrix(u_worldTrans, renderable.worldTransform);
         program.setUniformf(u_color, 1, 0, 0);
        /* renderable.meshPart.render(program,
             renderable.primitiveType,
             renderable.meshPartOffset,
             renderable.meshPartSize);*/
-   }
+    }
 
     @Override
-    public void end () {
+    public void end() {
         program.end();
     }
 
     @Override
-    public int compareTo (Shader other) {
+    public int compareTo(Shader other) {
         return 0;
     }
+
     @Override
-    public boolean canRender (Renderable instance) {
+    public boolean canRender(Renderable instance) {
         return true;
     }
 }

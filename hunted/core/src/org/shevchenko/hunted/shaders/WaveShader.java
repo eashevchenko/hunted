@@ -11,8 +11,8 @@ import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 
-public class WaveShader implements Shader{
-	ShaderProgram program;
+public class WaveShader implements Shader {
+    ShaderProgram program;
     Camera camera;
     RenderContext context;
     int u_projTrans;
@@ -21,7 +21,7 @@ public class WaveShader implements Shader{
     int u_colorV;
 
     @Override
-    public void init () {
+    public void init() {
         String vert = Gdx.files.internal("shaders/waves_v.glsl").readString();
         String frag = Gdx.files.internal("shaders/waves_f.glsl").readString();
         program = new ShaderProgram(vert, frag);
@@ -33,14 +33,14 @@ public class WaveShader implements Shader{
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         program.dispose();
     }
 
     @Override
-    public void begin (Camera camera, RenderContext context) {
+    public void begin(Camera camera, RenderContext context) {
         this.camera = camera;
-       this.context = context;
+        this.context = context;
         program.begin();
         program.setUniformMatrix(u_projTrans, camera.combined);
         context.setDepthTest(GL20.GL_LEQUAL);
@@ -48,9 +48,9 @@ public class WaveShader implements Shader{
     }
 
     @Override
-    public void render (Renderable renderable) {
-    	program.setUniformMatrix(u_worldTrans, renderable.worldTransform);
-        Color colorU = ((ColorAttribute)renderable.material.get(ColorAttribute.Diffuse)).color;
+    public void render(Renderable renderable) {
+        program.setUniformMatrix(u_worldTrans, renderable.worldTransform);
+        Color colorU = ((ColorAttribute) renderable.material.get(ColorAttribute.Diffuse)).color;
         Color colorV = Color.BLUE;
         program.setUniformf(u_colorU, colorU.r, colorU.g, colorU.b);
         program.setUniformf(u_colorV, colorV.r, colorV.g, colorV.b);
@@ -58,19 +58,20 @@ public class WaveShader implements Shader{
             renderable.primitiveType,
             renderable.meshPartOffset,
             renderable.meshPartSize);*/
-   }
+    }
 
     @Override
-    public void end () {
+    public void end() {
         program.end();
     }
 
     @Override
-    public int compareTo (Shader other) {
+    public int compareTo(Shader other) {
         return 0;
     }
+
     @Override
-    public boolean canRender (Renderable instance) {
+    public boolean canRender(Renderable instance) {
         return true;
     }
 }

@@ -10,49 +10,48 @@ import org.shevchenko.hunted.utils.BulletEntity;
 import org.shevchenko.hunted.utils.BulletWorld;
 
 public class ModelEntity {
-	private Model model;
-	
-	private BulletEntity e;
-	private Vector3 position;
-	
-	ModelEntity(){
-		setupModel();
-		
-	}
-	
+    private Model model;
 
-	private void setupModel(){
-	model =	AssetFactory.getInstance().get(AssetFactory.ModelType.CUBE, Model.class);
-	     
-	}
-	
-	public void addPhysics(BulletWorld world, float mass, String name, Vector3 position){
-		 btCollisionShape b = new btBvhTriangleMeshShape(getModel().meshParts);
-		 world.addConstructor(name, new BulletConstructor(getModel(), mass,b));
-		 world.add(name, position.x,position.y,position.z);
-	}
-	
-	
+    private BulletEntity e;
+    private Vector3 position;
 
-	public Model getModel() {
-		return model;
-	}
+    ModelEntity() {
+        setupModel();
 
-	public void setModel(Model model) {
-		this.model = model;
-	}
-
-	public BulletEntity getE() {
-		return e;
-	}
-
-	public void setE(BulletEntity e) {
-		this.e = e;
-	}
+    }
 
 
-	public Vector3 getPosition() {
-		return position;
-	}
+    private void setupModel() {
+        model = AssetFactory.getInstance().get(AssetFactory.ModelType.CUBE, Model.class);
+
+    }
+
+    public void addPhysics(BulletWorld world, float mass, String name, Vector3 position) {
+        btCollisionShape b = new btBvhTriangleMeshShape(getModel().meshParts);
+        world.addConstructor(name, new BulletConstructor(getModel(), mass, b));
+        world.add(name, position.x, position.y, position.z);
+    }
+
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public BulletEntity getE() {
+        return e;
+    }
+
+    public void setE(BulletEntity e) {
+        this.e = e;
+    }
+
+
+    public Vector3 getPosition() {
+        return position;
+    }
 
 }
